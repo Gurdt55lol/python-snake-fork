@@ -1,8 +1,26 @@
+banner = """
+:'######::'##::: ##::::'###::::'##:::'##:'########:
+'##... ##: ###:: ##:::'## ##::: ##::'##:: ##.....::
+ ##:::..:: ####: ##::'##:. ##:: ##:'##::: ##:::::::
+. ######:: ## ## ##:'##:::. ##: #####:::: ######:::
+:..... ##: ##. ####: #########: ##. ##::: ##...::::
+'##::: ##: ##:. ###: ##.... ##: ##:. ##:: ##:::::::
+. ######:: ##::. ##: ##:::: ##: ##::. ##: ########:
+:......:::..::::..::..:::::..::..::::..::........::
+"""
+
 import curses
 import time
 import sys
 from random import randint
 
+# gather user info for the tweaks
+
+print(banner)
+time.sleep(1)
+delay = int(input("Enter game speed per frame as int: "))
+
+# code to make the game work
 class Field:
     def __init__(self, size):
         self.size = size
@@ -189,7 +207,7 @@ def main(screen):
         field.render(screen)
         screen.refresh()
         
-        time.sleep(.4)
+        time.sleep(delay)
 
 if __name__=='__main__':
     curses.wrapper(main)
