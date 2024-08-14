@@ -7,6 +7,7 @@ banner = """
 '##::: ##: ##:. ###: ##.... ##: ##:. ##:: ##:::::::
 . ######:: ##::. ##: ##:::: ##: ##::. ##: ########:
 :......:::..::::..::..:::::..::..::::..::........::
+.....................in terminal
 """
 
 import curses
@@ -17,8 +18,15 @@ from random import randint
 # gather user info for the tweaks
 
 print(banner)
-time.sleep(1)
-delay = int(input("Enter game speed per frame as int: "))
+
+try: # ask user to enter the speed the game will run per frame
+    speed = float(input("Enter game speed per frame as int: "))
+except:
+    print("setting default speed (0.4)...")
+    speed = .4
+
+print("speed:",speed)
+time.sleep(5)
 
 # code to make the game work
 class Field:
@@ -207,7 +215,7 @@ def main(screen):
         field.render(screen)
         screen.refresh()
         
-        time.sleep(delay)
+        time.sleep(speed)
 
 if __name__=='__main__':
     curses.wrapper(main)
