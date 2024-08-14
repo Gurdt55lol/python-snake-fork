@@ -26,9 +26,11 @@ except:
     speed = .4
 
 try: 
+    field_size = int(input("Enter game field size as int: "))
+except:
+    print("setting default field (10) ...")
+    field_size = 10
 
-
-print("speed:",speed)
 time.sleep(5)
 
 # code to make the game work
@@ -201,6 +203,7 @@ def main(screen):
     screen.timeout(0)
 
     # Init snake & field
+    field = Field(field_size)
     snake = Snake("Joe")
     snake.set_field(field)
 
