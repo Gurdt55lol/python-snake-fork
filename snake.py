@@ -20,10 +20,13 @@ from random import randint
 print(banner)
 
 try: # ask user to enter the speed the game will run per frame
-    speed = float(input("Enter game speed per frame as int: "))
+    speed = float(input("Enter game speed per frame as float: "))
 except:
     print("setting default speed (0.4)...")
     speed = .4
+
+try: 
+
 
 print("speed:",speed)
 time.sleep(5)
@@ -136,6 +139,8 @@ class Snake:
         tail = self._check_limit(tail)
         self.coords.insert(0, tail)
 
+    # def in_wall
+
     def is_alive(self):
         head = self.coords[-1]
         snake_body = self.coords[:-1]
@@ -187,7 +192,6 @@ class Snake:
 
 
 
-
     def set_field(self, field):
         self.field = field
 
@@ -197,7 +201,6 @@ def main(screen):
     screen.timeout(0)
 
     # Init snake & field
-    field = Field(10)
     snake = Snake("Joe")
     snake.set_field(field)
 
